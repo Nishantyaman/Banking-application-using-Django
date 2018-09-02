@@ -1,0 +1,54 @@
+{% load static %} 
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Details by ifsc</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+	<link rel="stylesheet" type="text/css" href="{% static "banking/css/style_detail.css" %}">
+</head>
+<body>
+	<section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title"><a href="{% url 'home' %}"> Bank</a>
+                </h1>
+            </div>
+        </div>
+    </section>
+	<div class="column is-offset-4 is-4 detailss">
+                {% if product_data is None %}
+                    <h1> No records Exist </h1>
+                {% else %}                     
+                    
+                    <div class="box">
+                        <article class="media">
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <span class="name"><strong>Name :</strong>{{ names.name }}</span>
+                                        <br>
+                                        {% for product in product_data %}
+                                        <span class="branch"><strong>Branch :</strong>{{ product.branch }}</span>
+                                        <br>
+                                        <span class="address"><strong>Address:</strong>{{ product.address }}</span>
+                                        <br> 
+                                         <span class="city"><strong>City:</strong>{{ product.city }}</span>
+                                         <br>
+                                        <span class="district"><strong>District:</strong>{{ product.district }}</span>
+                                        <br>
+                                        <span class="state"><strong>State:</strong>{{ product.state }}</span>
+                                        {% endfor %}
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                {% endif %}  
+    </div>
+
+</body>
+</html>
